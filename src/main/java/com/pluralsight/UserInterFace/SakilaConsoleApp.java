@@ -5,12 +5,22 @@ import com.pluralsight.Persistance.DataManager;
 
 import java.sql.SQLException;
 import java.util.List;
-
+/*
+The SakilaConsoleApp class handles all interaction with the user.
+It shows menus, prompts the user for input, and displays the results.
+Instead of running SQL itself, it calls methods from the DataManager class to get the data it needs.
+This keeps the program organized and separates the user interface from the database logic.
+ */
 public class SakilaConsoleApp {
-    private DataManager dm;
+
+
+    private DataManager dm; // We don’t “make” a new class, we just store a reference to the existing class so
+                            // SakilaConsoleApp can use its methods.
+
 
     public SakilaConsoleApp(DataManager dm) {
-        this.dm = dm;
+        this.dm = dm; // The constructor links the UI to the database by storing
+                        // a reference to the DataManager object for the class to use.
     }
 
     public void start(){
