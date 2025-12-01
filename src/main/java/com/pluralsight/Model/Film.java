@@ -5,13 +5,15 @@ public class Film {
     private int id;
     private String title;
     private int length;
-    private String rating;
+    private String description;
+    private int year;
 
-    public Film(int id, String title, int length, String rating) {
+    public Film(int id, String title, int length, String description, int year) {
         this.id = id;
         this.title = title;
         this.length = length;
-        this.rating = rating;
+        this.description = description;
+        this.year = year;
     }
 
     public int getId() {
@@ -38,21 +40,25 @@ public class Film {
         this.length = length;
     }
 
-    public String getRating() {
-        return rating;
+    public String getDescription() {
+        return description;
     }
 
-    public void setRating(String rating) {
-        this.rating = rating;
+    public void setDescription(String description) {
+        this.description = description;
     }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
 
     @Override
     public String toString() {
-        return "Film{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", length=" + length +
-                ", rating='" + rating + '\'' +
-                '}';
+        return id + " - " + title + " (" + year + ")";
     }
 }

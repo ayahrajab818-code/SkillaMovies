@@ -1,19 +1,12 @@
 package com.pluralsight;
 
-
-import com.pluralsight.Model.Category;
 import com.pluralsight.Persistance.DataManager;
-import com.pluralsight.UserInterFace.ConsoleHelper;
 import com.pluralsight.UserInterFace.SakilaConsoleApp;
 import org.apache.commons.dbcp2.BasicDataSource;
 
-import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+
 
 public class Main {
 

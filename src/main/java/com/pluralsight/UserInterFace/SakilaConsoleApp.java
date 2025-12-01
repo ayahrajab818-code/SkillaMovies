@@ -17,8 +17,8 @@ public class SakilaConsoleApp {
         String prompt = """
                 Please select from one of the following:
                    1) List all Categories
-                   2) List all Films
-                   3) List Films by Category
+                   2) Search for Actor by Name
+                   3) List Films by Actor ID
                    0) Quit
                 Command""";
 
@@ -30,24 +30,55 @@ public class SakilaConsoleApp {
                 case 1:
                     processListAllCategories();
                     break;
-
+                case 2:
+                    processSearchActors();
+                    break;
+                case 3:
+                    processListFilmsByActor();
+                    break;
             }
-
         }
-
-
     }
 
     private void processListAllCategories() {
-        try{
-
+        try {
             List<Category> categories = dm.getAllCategories();
             ConsoleHelper.displayList(categories);
 
         } catch (SQLException e) {
             System.out.println("There was a SQL error: " + e.getMessage());
         }
+    }
 
+    private void processSearchActors() {
+        try {
+            String name = ConsoleHelper.promptForString("Enter actor name: ");
+            var actors = dm.searchActorsByName(name);
 
+            if (actors.isEmpty()) {
+                System.out.println("No actors found.");
+            } else {
+                ConsoleHelper.displayList(actors);
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+    private void processListFilmsByActor() {
+        try {
+            int actorId = ConsoleHelper.promptForInt("Enter actor ID: ");
+            var films = dm.getFilmByActorId(actorId);
+
+            if (films.isEmpty()) {
+                System.out.println("No films found for this actor.");
+            } else {
+                ConsoleHelper.displayList(films);
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
     }
 }
